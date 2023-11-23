@@ -64,12 +64,25 @@ const TodoTemplates = () => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  // 할 일 체크 처리 함수
+  const checkTodo = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, done: !todo.done } : todo
+      )
+    );
+  };
+
+  // 체크가 안 된 할 일의 개수 카운트 하기
+  const countRestTodo = todos.filter((todo) => !todo.done).length;
+
   return (
     <div className='TodoTemplate'>
-      <TodoHeader />
+      <TodoHeader count={countRestTodo} />
       <TodoMain
         todoList={todos}
         remove={removeTodo}
+        check={checkTodo}
       />
       <TodoInput addTodo={addTodo} />
     </div>
