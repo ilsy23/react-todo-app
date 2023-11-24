@@ -24,12 +24,26 @@
 명령을 터미널에서 실행하여 라이브러리 설치
 
 5. 추가 라이브러리
-   ```
-   $ npm install react-icons // 아이콘
-   $ npm install classnames // 클래스 add/remove 편리한거
-   $ npm install reactstrap bootstrap
-   $ npm install sass // scss 문법 사용
-   $ npm install @mui/material @emotion/react @emotion/styled
-   $ npm install @mui/icons-material
-   $ npm install react-router-dom
-   ```
+
+```
+$ npm install react-icons // 아이콘
+$ npm install classnames // 클래스 add/remove 편리한거
+$ npm install reactstrap bootstrap
+$ npm install sass // scss 문법 사용
+$ npm install @mui/material @emotion/react @emotion/styled
+$ npm install @mui/icons-material
+$ npm install react-router-dom
+```
+
+## 리액트 라우터 설정
+
+- index.js에 BrowserRouter 컴포넌트로 App 감싸기.
+
+```javascript
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
+```
