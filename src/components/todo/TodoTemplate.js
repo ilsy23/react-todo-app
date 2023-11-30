@@ -70,6 +70,8 @@ const TodoTemplates = () => {
       setTodos(json.todos);
     } else if (res.status === 401) {
       alert('일반 회원은 일정 등록이 5개로 제한됩니다.');
+    } else if (res.status === 400) {
+      alert('올바르지 않은 입력값입니다.');
     }
 
     // fetch(API_BASE_URL, {
