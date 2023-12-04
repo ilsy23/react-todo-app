@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import Login from './components/user/Login';
 import Join from './components/user/Join';
 import { AuthContextProvider } from './utils/AuthContext';
+import KakaoLoginHandler from './components/user/KakaoLoginHandler';
 
 const App = () => {
   return (
@@ -28,6 +29,10 @@ const App = () => {
               path='join'
               element={<Join />}
             />
+            <Route
+              path='/oauth/redirected/kakao'
+              element={<KakaoLoginHandler />}
+            ></Route>
           </Routes>
         </div>
         <Footer />
