@@ -42,15 +42,15 @@ const Header = () => {
       },
     });
 
-    // if (res.status === 208) {
-    //   const imgUrl = await res.text();
-    //   setProfileUrl(imgUrl);
-    //   return;
-    // }
+    if (res.status === 208) {
+      const imgUrl = await res.text();
+      setProfileUrl(imgUrl);
+      return;
+    }
 
     if (
-      res.status === 200 &&
-      res.headers.get('Content-type').startsWith('image')
+      res.status === 200
+      // && res.headers.get('Content-type').startsWith('image')
     ) {
       // 서버에서는 byte[]로 직렬화된 이미지가 응답되므로
       //blob()을 통해 전달받아야 한다. (json() xxx)
@@ -58,11 +58,13 @@ const Header = () => {
       // 해당 이미지를 imgUrl로 변경
       const imgUrl = window.URL.createObjectURL(profileBlob);
       setProfileUrl(imgUrl);
-    } else if (res.headers.get('Content-type').startsWith('text')) {
-      const imgUrl = await res.text();
-      setProfileUrl(imgUrl);
-    } else {
-      const err = await res.error();
+    }
+    // else if (res.headers.get('Content-type').startsWith('text')) {
+    //   const imgUrl = await res.text();
+    //   setProfileUrl(imgUrl);
+    // }
+    else {
+      const err = await res.text();
       setProfileUrl(null);
     }
   };
